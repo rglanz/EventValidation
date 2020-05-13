@@ -40,10 +40,11 @@ Type ```python startup.py```
         
 4. Control video playback with the next, prev, and replay buttons.
 
-5. Use the discard and undo buttons to update the discard log file. Upon
-loading an Event Times file, a new file called [video_file_name]_discard_log.csv
-is created. Each event is stored as a 1 (accepted event) or 0 (discarded event).
-This file is updated automatically whenever the discard or undo button is pressed.
+5. Use the discard, undo, and save buttons to update the discard log file. 
+
+        Upon loading an Event Times file, a new file called [video_file_name]_discard_log.csv
+        is created (or loaded, if it exists already). Each event is stored as a 1 (accepted event)
+        or 0 (discarded event).
 
 ## Hotkeys
 Open video file (1)
