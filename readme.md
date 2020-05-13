@@ -42,7 +42,12 @@ Type ```python startup.py```
         
 4. Control video playback with the next, prev, and replay buttons.
 
-5. Use the discard, undo, and save buttons to update the discard log file. 
+5. Adjust the event time.
+        
+        Drag the dashed line at time-lag 0 to adjust the event time. This overwrites the selected
+        'Event Times.csv' file.
+
+6. Use the discard, undo, and save buttons to update the discard log file. 
 
         Upon loading an Event Times file, a new file called [video_file_name]_discard_log.csv
         is created (or loaded, if it exists already). Each event is stored as a 1 (accepted event)
