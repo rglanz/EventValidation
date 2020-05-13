@@ -30,6 +30,9 @@ class DiscardEvent:
 
         self.saveBtn.setEnabled(True)
 
+    def undoDiscard(self):
+        self.discardLog[self.eventID] = 1
+
     def saveDiscardLog(self):
         np.savetxt(self.discard_file_path, self.discardLog, delimiter=',', fmt='%i')
 

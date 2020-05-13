@@ -10,7 +10,6 @@ import sys
 from file_dialog import FileDialog
 from playback_control import PlaybackControl
 from discard_event import DiscardEvent
-from undo_discard import UndoDiscard
 from slider_handle import SliderHandle
 
 
@@ -72,7 +71,7 @@ class GUIWindow(QWidget):
 
         self.undoBtn = QPushButton('Undo')
         self.undoBtn.setEnabled(False)
-        self.undoBtn.clicked.connect(lambda: UndoDiscard.restore_event(self))
+        self.undoBtn.clicked.connect(lambda: DiscardEvent.undoDiscard(self))
 
         # Slider
         self.eventSlider = QSlider(Qt.Horizontal)
@@ -154,7 +153,7 @@ class GUIWindow(QWidget):
                 DiscardEvent.updateDiscardLog(self)
         elif event.key() == Qt.Key_U:
             if self.undoBtn.isEnabled():
-                UndoDiscard.restore_event(self)
+                DiscardEvent.undoDiscard(self)
 
 
 if __name__ == '__main__':

@@ -3,6 +3,8 @@
 This GUI plays through 1-s epochs of a video, allowing the user to
 discard unwanted events.
 
+*Warning: This GUI is a work-in-progress and will be frequently updated.*
+
 ###### (Last updated 5.13.20)
 
 ## Installation
