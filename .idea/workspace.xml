@@ -25,15 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/time_adjust.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EventValidation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EventValidation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_dialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startup.py" beforeDir="false" afterPath="$PROJECT_DIR$/startup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/time_series_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_series_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video_segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/video_segmentation.py" afterDir="false" />
-    </list>
+    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589394815060</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added time_adjust functionality.">
+      <created>1589402298995</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589402298995</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,7 +141,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactored UndoDiscard class, rolled into DiscardEvent class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored UndoDiscard class, rolled into DiscardEvent class." />
+    <MESSAGE value="Added time_adjust functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added time_adjust functionality." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="234" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589399126366">
@@ -157,30 +157,30 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="739" y="293" key="FileChooserDialogImpl/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589398132487" />
-    <state width="1899" height="321" key="GridCell.Tab.0.bottom" timestamp="1589402126589">
+    <state width="1899" height="321" key="GridCell.Tab.0.bottom" timestamp="1589402247013">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402126589" />
-    <state width="1899" height="321" key="GridCell.Tab.0.center" timestamp="1589402126589">
+    <state width="1899" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
+    <state width="1899" height="321" key="GridCell.Tab.0.center" timestamp="1589402247013">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="321" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402126589" />
-    <state width="1899" height="321" key="GridCell.Tab.0.left" timestamp="1589402126589">
+    <state width="1899" height="321" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
+    <state width="1899" height="321" key="GridCell.Tab.0.left" timestamp="1589402247013">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="321" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402126589" />
-    <state width="1899" height="321" key="GridCell.Tab.0.right" timestamp="1589402126589">
+    <state width="1899" height="321" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
+    <state width="1899" height="321" key="GridCell.Tab.0.right" timestamp="1589402247013">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="321" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402126589" />
+    <state width="1899" height="321" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
     <state x="383" y="262" key="SettingsEditor" timestamp="1589399091748">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589395213642" />
     <state x="383" y="262" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589399091748" />
-    <state x="552" y="312" key="Vcs.Push.Dialog.v2" timestamp="1589395037941">
+    <state x="552" y="312" key="Vcs.Push.Dialog.v2" timestamp="1589402312408">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="552" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589395037941" />
+    <state x="552" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402312408" />
   </component>
 </project>
