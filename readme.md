@@ -3,7 +3,7 @@
 This GUI plays through 1-s epochs of a video, allowing the user to
 discard unwanted events.
 
-######(Last updated 5.13.20)
+###### (Last updated 5.13.20)
 
 ## Installation
 
@@ -21,7 +21,7 @@ Change the directory to this folder.
 
 Type ```python startup.py```
 
-##Typical use case
+## Typical use case
 
 1. Open Video
 
