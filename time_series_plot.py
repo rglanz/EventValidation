@@ -1,4 +1,4 @@
-# Plots time-series data
+# This Python file uses the following encoding: utf-8
 
 import pyqtgraph as pg
 import numpy as np

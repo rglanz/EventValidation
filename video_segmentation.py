@@ -1,4 +1,4 @@
-# Upon loading of video and event times, create an epoched framework for video times
+# This Python file uses the following encoding: utf-8
 
 import numpy as np
 
@@ -6,7 +6,7 @@ import numpy as np
 class VideoSegmentation:
     def create_epochs(self):
         # Convert event times to frame numbers
-        self.frameTimes = self.eventTimesData * self.Fs
+        self.frameTimes = np.ceil(self.eventTimesData * self.Fs)
         self.frameTimes = self.frameTimes.astype(int)
 
         self.eventLength = len(self.frameTimes)

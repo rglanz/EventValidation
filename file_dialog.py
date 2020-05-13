@@ -12,6 +12,7 @@ from time_series_segmentation import TimeSeriesSegmentation
 from time_series_plot import TimeSeriesPlot
 from discard_event import DiscardEvent
 from slider_handle import SliderHandle
+from time_adjust import TimeAdjust
 
 
 class FileDialog:
@@ -57,17 +58,20 @@ class FileDialog:
         event_times_dialog.setNameFilters(["Text (*.csv)"])
         event_times_dialog.selectNameFilter("Text (*.csv)")
         event_times_dialog.exec_()
-        event_times_file_name = event_times_dialog.selectedFiles()
+        self.event_times_file_path = event_times_dialog.selectedFiles()
 
-        if len(event_times_file_name) != 0:
-            with open(event_times_file_name[0], 'r', encoding='utf-8-sig') as f:
+        if len(self.event_times_file_path) != 0:
+            with open(self.event_times_file_path[0], 'r', encoding='utf-8-sig') as f:
                 self.eventTimesData = np.genfromtxt(f, dtype=float, delimiter=',')
 
             self.timeSeriesBtn.setEnabled(True)
             self.replayBtn.setEnabled(True)
             self.replayBtn.repaint()
 
-            self.plotWidget.addLine(x=0, y=None, pen=pg.mkPen('k', width=1, style=Qt.DashLine))
+            self.center_line = self.plotWidget.addLine(x=0, y=None, pen=pg.mkPen('k', width=1, style=Qt.DashLine),
+                                                       movable=True, hoverPen=pg.mkPen('b', width=1, style=Qt.DashLine),
+                                                       bounds=[-0.5, 0.5])
+            self.center_line.sigPositionChangeFinished.connect(lambda: TimeAdjust.centerLineAdjusted(self))
 
             VideoSegmentation.create_epochs(self)
             SliderHandle.__init__(self)

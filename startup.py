@@ -17,7 +17,7 @@ class GUIWindow(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setGeometry(300, 20, 900, 900)
+        self.setGeometry(300, 30, 900, 900)
 
         # QMedia object
         self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
