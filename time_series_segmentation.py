@@ -23,6 +23,7 @@ class TimeSeriesSegmentation:
 
     def createEpochs(self):
         self.time_series_epochs = np.zeros([self.event_length, int(round(self.Fs))-1])
+        print("Event length " + str(self.event_length))
         for iEpoch in np.arange(0, self.event_length):
             if (self.frame_times[iEpoch] >= int(round(self.Fs/2)) and
                 self.frame_times[iEpoch] + int(round(self.Fs/2))-1 < len(self.time_series_data)):
@@ -33,8 +34,8 @@ class TimeSeriesSegmentation:
                 start_index = 0
                 end_index = int(round(self.Fs))-1
 
-            elif self.frame_times[iEpoch] + int(round(self.Fs/2))-1 >= len(self.time_series_data):
-                start_index = len(self.time_series_data) - int(round(self.Fs))-1
+            elif self.frame_times[iEpoch] + int(round(self.Fs/2))-1 > len(self.time_series_data):
+                start_index = len(self.time_series_data) - (int(round(self.Fs))-1)
                 end_index = len(self.time_series_data)
 
             self.time_series_epochs[iEpoch, :] = self.time_series_data[start_index:end_index]
