@@ -2,7 +2,7 @@
 
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtMultimedia import QMediaContent
-from PyQt5.QtCore import QUrl, Qt
+from PyQt5.QtCore import QUrl, Qt, QRect
 import cv2  # must be installed as headless, or will collide with Qt
 import numpy as np
 import pyqtgraph as pg
@@ -45,6 +45,11 @@ class FileDialog:
             self.video_widget.setFixedHeight(self.video_height)
             self.video_widget.setFixedWidth(self.video_width)
             self.plot_window.setFixedWidth(self.video_width)
+
+            # Re-center GUI
+            _, _, gui_width, gui_height = self.frameGeometry().getRect()
+            self.setGeometry(int(round(0.5*(self.screen_width - gui_width))),
+                             int(round(0.25*(self.screen_height - gui_height))), gui_width, self.screen_height)
 
             # Re-size slider
             self.event_slider.setFixedWidth(self.video_width)

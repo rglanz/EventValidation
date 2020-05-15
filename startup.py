@@ -18,8 +18,9 @@ from playback_speed import PlaybackSpeed
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
-        _, _, screen_width, screen_height = QDesktopWidget().screenGeometry(-1).getRect()
-        self.setGeometry(0.25*screen_width, 0.125*screen_height, 0.50*screen_width, 0.75*screen_height)
+        _, _, self.screen_width, self.screen_height = QDesktopWidget().screenGeometry(-1).getRect()
+        self.setGeometry(0.25*self.screen_width, 0.125*self.screen_height,
+                         0.50*self.screen_width, 0.75*self.screen_height)
 
         self.createGUIStyle()
         self.createGUIElements()
