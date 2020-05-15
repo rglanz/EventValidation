@@ -2,6 +2,7 @@
 
 from PyQt5.QtWidgets import QSlider
 from playback_control import PlaybackControl
+from time_series_plot import TimeSeriesPlot
 
 
 class SliderHandle:
@@ -22,5 +23,9 @@ class SliderHandle:
             self.event_ID_label.repaint()
 
     def eventSliderReleased(self):
+        # Update time-series plot
+        if hasattr(self, 'time_series_data'):
+            TimeSeriesPlot.updateTimeSeries(self)
+
         # Play video
         PlaybackControl.replayButtonPressed(self)

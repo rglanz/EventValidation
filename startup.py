@@ -1,10 +1,10 @@
 # This Python file uses the following encoding: utf-8
 
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QLabel, QSlider, QAction, QMainWindow, \
-                            QMessageBox
+                            QMessageBox, QDesktopWidget
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtMultimedia import QMediaPlayer
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QRect
 from PyQt5.QtGui import QPalette
 from pyqtgraph import GraphicsLayoutWidget
 import sys
@@ -18,8 +18,8 @@ from playback_speed import PlaybackSpeed
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
-
-        self.setGeometry(300, 30, 900, 900)
+        _, _, screen_width, screen_height = QDesktopWidget().screenGeometry(-1).getRect()
+        self.setGeometry(0.25*screen_width, 0.125*screen_height, 0.50*screen_width, 0.75*screen_height)
 
         self.createGUIStyle()
         self.createGUIElements()
