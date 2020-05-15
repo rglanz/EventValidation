@@ -1,4 +1,4 @@
-# Provides back-end for video control buttons
+# This Python file uses the following encoding: utf-8
 
 from PyQt5.QtCore import QTimer
 from playback_timer import PlaybackTimer
@@ -6,65 +6,79 @@ from time_series_plot import TimeSeriesPlot
 
 
 class PlaybackControl:
-    def next_button_pressed(self):
+    def nextButtonPressed(self):
+        # Update event ID
+        if self.event_ID < self.event_length - 1:
+            self.event_ID += 1
+
         # Update buttons
-        QTimer.singleShot(10, lambda: PlaybackControl.disable_buttons(self))
+        QTimer.singleShot(10, lambda: PlaybackControl.disableButtons(self))
 
         # Update event label
-        if self.eventID < self.eventLength - 1:
-            self.eventID += 1
-            self.eventIDLabel.setText('Event ' + str(self.eventID) + ' of ' + str(self.eventLength - 1))
-            self.eventIDLabel.repaint()
+        self.event_ID_label.setText('Event ' + str(self.event_ID) + ' of ' + str(self.event_length - 1))
+        self.event_ID_label.repaint()
 
         # Update time-series plot
-        if hasattr(self, 'timeSeriesData'):
-            TimeSeriesPlot.update_time_series(self)
+        if hasattr(self, 'time_series_data'):
+            TimeSeriesPlot.updateTimeSeries(self)
 
         # Update slider
-        self.eventSlider.setValue(self.eventID)
+        self.event_slider.setValue(self.event_ID)
 
-        # Play video clip
+        # Update center line
+        if self.discard_log[self.event_ID]:
+            self.center_line.setMovable(True)
+            self.center_line.setPen(color=(0, 0, 0))
+        else:
+            self.center_line.setMovable(False)
+            self.center_line.setPen(color=(220, 220, 220))
+
+        # Play media
         PlaybackTimer.__init__(self)
 
-    def prev_button_pressed(self):
+    def prevButtonPressed(self):
+        # Update event ID
+        if self.event_ID > 0:
+            self.event_ID -= 1
+
         # Update buttons
-        QTimer.singleShot(10, lambda: PlaybackControl.disable_buttons(self))
+        QTimer.singleShot(10, lambda: PlaybackControl.disableButtons(self))
 
         # Update event label
-        if self.eventID > 0:
-            self.eventID -= 1
-            self.eventIDLabel.setText('Event ' + str(self.eventID) + ' of ' + str(self.eventLength - 1))
-            self.eventIDLabel.repaint()
+        self.event_ID_label.setText('Event ' + str(self.event_ID) + ' of ' + str(self.event_length - 1))
+        self.event_ID_label.repaint()
 
         # Update time-series plot
-        if hasattr(self, 'timeSeriesData'):
-            TimeSeriesPlot.update_time_series(self)
+        if hasattr(self, 'time_series_data'):
+            TimeSeriesPlot.updateTimeSeries(self)
+
+        # Update center line
+        if self.discard_log[self.event_ID]:
+            self.center_line.setMovable(True)
+            self.center_line.setPen(color=(0, 0, 0))
+        else:
+            self.center_line.setMovable(False)
+            self.center_line.setPen(color=(220, 220, 220))
 
         # Update slider
-        self.eventSlider.setValue(self.eventID)
+        self.event_slider.setValue(self.event_ID)
 
-        # Play video clip
+        # Play media
         PlaybackTimer.__init__(self)
 
-    def replay_button_pressed(self):
+    def replayButtonPressed(self):
         # Update label on first playback
-        self.replayBtn.setText('Replay')
+        self.replay_button.setText('Replay')
 
         # Update buttons
-        QTimer.singleShot(10, lambda: PlaybackControl.disable_buttons(self))
+        QTimer.singleShot(10, lambda: PlaybackControl.disableButtons(self))
 
-        # Update time-series plot
-        if hasattr(self, 'timeSeriesData'):
-            TimeSeriesPlot.update_time_series(self)
-
-        # Play video clip
+        # Play media
         PlaybackTimer.__init__(self)
 
-    def disable_buttons(self):
-        self.nextBtn.setEnabled(False)
-        self.prevBtn.setEnabled(False)
-        self.replayBtn.setEnabled(False)
-        self.discardBtn.setEnabled(False)
-        self.undoBtn.setEnabled(False)
-        self.eventSlider.setEnabled(False)
-
+    def disableButtons(self):
+        self.next_button.setEnabled(False)
+        self.prev_button.setEnabled(False)
+        self.replay_button.setEnabled(False)
+        self.discard_button.setEnabled(False)
+        self.event_slider.setEnabled(False)

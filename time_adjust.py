@@ -9,21 +9,20 @@ from time_series_segmentation import TimeSeriesSegmentation
 class TimeAdjust:
     def centerLineAdjusted(self):
         # Update eventTimesData
-        original_event_time = self.eventTimesData[self.eventID]
+        original_event_time = self.event_times_data[self.event_ID]
         new_center_line_position = self.center_line.pos()
         new_event_time = original_event_time + new_center_line_position[0]
 
-        self.eventTimesData[self.eventID] = new_event_time
+        self.event_times_data[self.event_ID] = new_event_time
+        np.savetxt(self.event_times_path, self.event_times_data)
 
         # Update frameIndex data
-        VideoSegmentation.create_epochs(self)
-
-        # Save Event Times.csv
-        np.savetxt(self.event_times_file_path[0], self.eventTimesData)
+        VideoSegmentation.__init__(self)
 
         # Update Time-series (if applicable)
-        if hasattr(self, 'timeSeriesData'):
-            TimeSeriesSegmentation.create_epochs(self)
-            TimeSeriesPlot.update_time_series(self)
+        if hasattr(self, 'time_series_data'):
+            TimeSeriesSegmentation.createEpochs(self)
+            TimeSeriesPlot.updateTimeSeries(self)
 
+        # Snap center-line back to zero
         self.center_line.setPos(0)

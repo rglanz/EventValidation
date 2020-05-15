@@ -5,7 +5,7 @@ discard unwanted events.
 
 *Warning: This GUI is a work-in-progress and will be frequently updated.*
 
-###### (Last updated 5.13.20)
+###### (Last updated 5.15.20)
 
 ## Installation
 
@@ -29,11 +29,12 @@ Type ```python startup.py```
 
 2. Event Times
         
-        Select a csv file with event times in seconds.
+        Select a csv file with event times in seconds. (If you adjust the event times within the GUI, this file will
+        be overwritten, so save a backup!)
         
 3. Time Series (Optional)
 
-        If desired, load a csv file with the time-series data. Each
+        Load a csv file with the time-series data. Each
         entry should represent the value of the time-series at that
         particular frame.
         
@@ -47,11 +48,11 @@ Type ```python startup.py```
         Drag the dashed line at time-lag 0 to adjust the event time. This overwrites the selected
         'Event Times.csv' file.
 
-6. Use the discard, undo, and save buttons to update the discard log file. 
+6. Use the discard button to update the discard log file. 
 
         Upon loading an Event Times file, a new file called [video_file_name]_discard_log.csv
         is created (or loaded, if it exists already). Each event is stored as a 1 (accepted event)
-        or 0 (discarded event).
+        or 0 (discarded event). This saves automatically.
 
 ## Hotkeys
 Open video file (1)
@@ -67,10 +68,6 @@ Previous event (left arrow)
 Replay event (r)
 
 Discard event (d)
-
-Undo discarded event (u)
-
-Save discard log (s)
 
 ## Bugs
 

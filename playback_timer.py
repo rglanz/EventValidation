@@ -1,4 +1,4 @@
-# Provides back-end timer for video and plotting events
+# This Python file uses the following encoding: utf-8
 
 from PyQt5.QtCore import Qt, QTimer
 import pyqtgraph as pg
@@ -7,70 +7,66 @@ import pyqtgraph as pg
 class PlaybackTimer:
     def __init__(self):
         # Start the timer
-        self.playbackTimer = QTimer()
-        self.playbackTimer.setTimerType(Qt.PreciseTimer)
-        self.playbackTimer.start(1000)
+        self.media_timer = QTimer()
+        self.media_timer.setTimerType(Qt.PreciseTimer)
+        self.media_timer.start(self.timer_length)
 
         # Control plot
-        self.plotTimer = QTimer()
-        self.plotTimer.setTimerType(Qt.PreciseTimer)
-        self.plotTimer.setInterval(50)
-        self.plotTimer.start()
+        self.plot_timer = QTimer()
+        self.plot_timer.setTimerType(Qt.PreciseTimer)
+        self.plot_timer.setInterval(50)
+        self.plot_timer.start()
 
-        self.cursorPosition = 0.05
+        self.cursor_position = self.plot_refresh_rate/100
         if hasattr(self, 'line1'):
-            self.line1.setValue(self.cursorPosition - 0.5)
+            self.line1.setValue(self.cursor_position - 0.5)
         else:
-            self.line1 = self.plotWidget.addLine(x=self.cursorPosition - 0.5,
+            self.line1 = self.plot_widget.addLine(x=self.cursor_position - 0.5,
                                                  y=None, pen=pg.mkPen('r', width=2))
 
-        self.plotTimer.timeout.connect(lambda: PlaybackTimer.update_plot(self))
-        self.playbackTimer.timeout.connect(lambda: PlaybackTimer.end_plot(self))
+        self.plot_timer.timeout.connect(lambda: PlaybackTimer.updatePlot(self))
+        self.media_timer.timeout.connect(lambda: PlaybackTimer.endPlot(self))
 
         # Control media
-        self.mediaPlayer.setPosition(1000 * self.frameIndex[self.eventID, 0] / self.Fs)
-        self.mediaPlayer.play()
-        self.playbackTimer.timeout.connect(lambda: PlaybackTimer.end_media_playback(self))
+        self.media_player.setPosition(1000 * self.frame_index[self.event_ID, 0] / self.Fs)
+        self.media_player.play()
+        self.media_timer.timeout.connect(lambda: PlaybackTimer.endMediaPlayback(self))
 
         # Update buttons
-        self.playbackTimer.timeout.connect(lambda: PlaybackTimer.enable_buttons(self))
+        self.media_timer.timeout.connect(lambda: PlaybackTimer.enableButtons(self))
 
-    def end_media_playback(self):
-        self.mediaPlayer.pause()
+    def endMediaPlayback(self):
+        self.media_player.pause()
+        self.media_timer.stop()
 
-    def update_plot(self):
-        self.line1.setValue(self.cursorPosition - 0.5)
-        self.cursorPosition += 0.05
+    def updatePlot(self):
+        self.line1.setValue(self.cursor_position - 0.5)
+        self.cursor_position += self.plot_refresh_rate/100
 
-    def end_plot(self):
-        self.plotTimer.stop()
+    def endPlot(self):
         self.line1.setValue(0.5)
+        self.plot_timer.stop()
         QTimer.singleShot(10, lambda: PlaybackTimer.restartLine(self))
 
     def restartLine(self):
         self.line1.setValue(-0.5)
 
-    def enable_buttons(self):
-        if self.eventID < self.eventLength - 1:
-            self.nextBtn.setEnabled(True)
-        elif self.eventID == self.eventLength - 1:
-            self.nextBtn.setEnabled(False)
+    def enableButtons(self):
+        if self.event_ID < self.event_length - 1:
+            self.next_button.setEnabled(True)
+        elif self.event_ID == self.event_length - 1:
+            self.next_button.setEnabled(False)
 
-        if self.eventID > 0:
-            self.prevBtn.setEnabled(True)
-        elif self.eventID <= 0:
-            self.prevBtn.setEnabled(False)
+        if self.event_ID > 0:
+            self.prev_button.setEnabled(True)
+        elif self.event_ID <= 0:
+            self.prev_button.setEnabled(False)
 
-        self.replayBtn.setEnabled(True)
+        self.replay_button.setEnabled(True)
+        self.event_slider.setEnabled(True)
 
-        if self.discardLog[self.eventID]:
-            self.discardBtn.setEnabled(True)
+        self.discard_button.setEnabled(True)
+        if self.discard_log[self.event_ID]:
+            self.discard_button.setChecked(False)
         else:
-            self.discardBtn.setEnabled(False)
-
-        if self.discardLog[self.eventID]:
-            self.undoBtn.setEnabled(False)
-        else:
-            self.undoBtn.setEnabled(True)
-
-        self.eventSlider.setEnabled(True)
+            self.discard_button.setChecked(True)

@@ -1,4 +1,4 @@
-# Controls slider behavior
+# This Python file uses the following encoding: utf-8
 
 from PyQt5.QtWidgets import QSlider
 from playback_control import PlaybackControl
@@ -6,21 +6,21 @@ from playback_control import PlaybackControl
 
 class SliderHandle:
     def __init__(self):
-        self.eventSlider.setRange(0, self.eventLength - 1)
-        self.eventSlider.setTickInterval(round(self.eventLength/20))
-        self.eventSlider.setTickPosition(QSlider.TicksBelow)
-        self.eventSlider.setVisible(True)
-        self.eventSlider.setEnabled(True)
+        self.event_slider.setRange(0, self.event_length - 1)
+        self.event_slider.setTickInterval(round(self.event_length/20))
+        self.event_slider.setTickPosition(QSlider.TicksBelow)
+        self.event_slider.setVisible(True)
+        self.event_slider.setEnabled(True)
 
-    def slider_changed(self):
-        if self.eventSlider.isSliderDown:
-            #Update eventID
-            self.eventID = self.eventSlider.value()
+    def eventSliderChanged(self):
+        if self.event_slider.isSliderDown:
+            #Update event ID
+            self.event_ID = self.event_slider.value()
 
             # Update label
-            self.eventIDLabel.setText('Event ' + str(self.eventID) + ' of ' + str(self.eventLength - 1))
-            self.eventIDLabel.repaint()
+            self.event_ID_label.setText('Event ' + str(self.event_ID) + ' of ' + str(self.event_length - 1))
+            self.event_ID_label.repaint()
 
-    def slider_released(self):
+    def eventSliderReleased(self):
         # Play video
-        PlaybackControl.replay_button_pressed(self)
+        PlaybackControl.replayButtonPressed(self)

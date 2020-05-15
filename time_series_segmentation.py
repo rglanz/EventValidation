@@ -1,40 +1,40 @@
-# Segments time series into epochs based on event times.
+# This Python file uses the following encoding: utf-8
 
 import numpy as np
 from PyQt5.QtWidgets import QMessageBox
 
 
 class TimeSeriesSegmentation:
-    def check_length(self):
-        self.timeSeriesErrorCode = 0
+    def __init__(self):
+        self.time_series_error_code = 0
 
-        if len(self.timeSeriesData) != self.videoNFrames:
+        if len(self.time_series_data) != self.video_n_frames:
             time_series_error_message = QMessageBox()
             time_series_error_message.setWindowTitle('Import Time Series')
             time_series_error_message.setText("Time Series length does not match Video length." +
                                               "\nTime Series not loaded.")
-
-            video_frames_int = int(self.videoNFrames)
-            time_series_error_message.setDetailedText("Time Series Length: " + str(len(self.timeSeriesData)) +
-                                                      "\nVideo Length: " + str(video_frames_int))
+            time_series_error_message.setDetailedText("Time Series Length: " + str(len(self.time_series_data)) +
+                                                      "\nVideo Length: " + str(int(self.video_n_frames)))
 
             time_series_error_message.exec_()
-            self.timeSeriesErrorCode = 1
+            self.time_series_error_code = 1
+        else:
+            TimeSeriesSegmentation.createEpochs(self)
 
-    def create_epochs(self):
-        self.timeSeriesEpochs = np.zeros([self.eventLength, 99])
-        for iEpoch in np.arange(0, self.eventLength):
-            if (self.frameTimes[iEpoch] >= 50 and
-                self.frameTimes[iEpoch] + 49 < len(self.timeSeriesData)):
-                start_index = self.frameTimes[iEpoch] - 50
-                end_index = self.frameTimes[iEpoch] + 49
+    def createEpochs(self):
+        self.time_series_epochs = np.zeros([self.event_length, int(round(self.Fs))-1])
+        for iEpoch in np.arange(0, self.event_length):
+            if (self.frame_times[iEpoch] >= int(round(self.Fs/2)) and
+                self.frame_times[iEpoch] + int(round(self.Fs/2))-1 < len(self.time_series_data)):
+                start_index = self.frame_times[iEpoch] - int(round(self.Fs/2))
+                end_index = self.frame_times[iEpoch] + int(round(self.Fs/2))-1
 
-            elif self.frameTimes[iEpoch] < 50:
+            elif self.frame_times[iEpoch] < int(round(self.Fs/2)):
                 start_index = 0
-                end_index = 99
+                end_index = int(round(self.Fs))-1
 
-            elif self.frameTimes[iEpoch] + 49 >= len(self.timeSeriesData):
-                start_index = len(self.timeSeriesData) - 99
-                end_index = len(self.timeSeriesData)
+            elif self.frame_times[iEpoch] + int(round(self.Fs/2))-1 >= len(self.time_series_data):
+                start_index = len(self.time_series_data) - int(round(self.Fs))-1
+                end_index = len(self.time_series_data)
 
-            self.timeSeriesEpochs[iEpoch, :] = self.timeSeriesData[start_index:end_index]
+            self.time_series_epochs[iEpoch, :] = self.time_series_data[start_index:end_index]

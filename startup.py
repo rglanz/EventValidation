@@ -1,163 +1,204 @@
-# Launches the GUI
+# This Python file uses the following encoding: utf-8
 
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QVBoxLayout, QHBoxLayout, QLabel,\
-                            QSlider
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QLabel, QSlider, QAction, QMainWindow, \
+                            QMessageBox
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtMultimedia import QMediaPlayer
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPalette
 from pyqtgraph import GraphicsLayoutWidget
 import sys
 from file_dialog import FileDialog
 from playback_control import PlaybackControl
 from discard_event import DiscardEvent
 from slider_handle import SliderHandle
+from playback_speed import PlaybackSpeed
 
 
-class GUIWindow(QWidget):
-    def __init__(self):
-        super().__init__()
+class MainWindow(QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super(MainWindow, self).__init__(*args, **kwargs)
 
         self.setGeometry(300, 30, 900, 900)
 
-        # QMedia object
-        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+        self.createGUIStyle()
+        self.createGUIElements()
+        self.createGUILayout()
 
-        # QVideo object
-        self.videoWidget = QVideoWidget()
+    def createGUIStyle(self):
+        self.palette = QPalette()
 
-        # Plot object
-        self.plotWindow = GraphicsLayoutWidget()
-        self.plotWindow.ci.layout.setContentsMargins(0, 0, 0, 0)
-        self.plotWindow.ci.layout.setSpacing(0)
-        self.plotWindow.setBackground(None)
-        self.plotWidget = self.plotWindow.addPlot(0, 0)
-        self.plotWidget.setLabel('bottom', "Time (s)")
-        self.plotWidget.setXRange(-0.5, 0.5)
-        self.plotWidget.hideAxis('left')
-        self.plotWidget.hideButtons()
-        self.plotWidget.setMouseEnabled(x=False, y=False)
+        self.palette.setColor(QPalette.Background, Qt.white)
+        self.palette.setColor(QPalette.WindowText, Qt.black)
+        self.palette.setColor(self.menuBar().backgroundRole(), Qt.white)
 
-        # Buttons
-        self.videoBtn = QPushButton('Open Video')
-        self.videoBtn.clicked.connect(lambda: FileDialog.open_video(self))
+        self.setPalette(self.palette)
 
-        self.eventIndexBtn = QPushButton('Event Index')
-        self.eventIndexBtn.setEnabled(False)
-        self.eventIndexBtn.clicked.connect(lambda: FileDialog.open_event_times(self))
+    def createGUIElements(self):
+        # Video object
+        self.media_player = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+        self.video_widget = QVideoWidget()
+        self.media_player.setVideoOutput(self.video_widget)
 
-        self.timeSeriesBtn = QPushButton('Time Series')
-        self.timeSeriesBtn.setEnabled(False)
-        self.timeSeriesBtn.clicked.connect(lambda: FileDialog.open_time_series(self))
+        # File selection menu bar
+        self.menuBar().setNativeMenuBar(False)  # Enable menu bar in mac
+        self.file_menu = self.menuBar().addMenu('File')
 
-        self.prevBtn = QPushButton('Prev')
-        self.prevBtn.setEnabled(False)
-        self.prevBtn.clicked.connect(lambda: PlaybackControl.prev_button_pressed(self))
+        self.video_menu_action = QAction(self)
+        self.video_menu_action.setText('Video')
+        self.file_menu.addAction(self.video_menu_action)
+        self.video_menu_action.triggered.connect(lambda: FileDialog.openVideo(self))
 
-        self.nextBtn = QPushButton('Next')
-        self.nextBtn.setEnabled(False)
-        self.nextBtn.clicked.connect(lambda: PlaybackControl.next_button_pressed(self))
+        self.event_times_menu_action = QAction(self)
+        self.event_times_menu_action.setText('Event Times')
+        self.event_times_menu_action.setEnabled(False)
+        self.file_menu.addAction(self.event_times_menu_action)
+        self.event_times_menu_action.triggered.connect(lambda: FileDialog.openEventTimes(self))
 
-        self.replayBtn = QPushButton('Play') # Is set to 'Play' until first playback occurs
-        self.replayBtn.setEnabled(False)
-        self.replayBtn.clicked.connect(lambda: PlaybackControl.replay_button_pressed(self))
+        self.time_series_menu_action = QAction(self)
+        self.time_series_menu_action.setText('Time-series (optional)')
+        self.time_series_menu_action.setEnabled(False)
+        self.file_menu.addAction(self.time_series_menu_action)
+        self.time_series_menu_action.triggered.connect(lambda: FileDialog.openTimeSeries(self))
+        self.timer_length = 1000
 
-        self.saveBtn = QPushButton('Save')
-        self.saveBtn.setEnabled(False)
-        self.saveBtn.clicked.connect(lambda: DiscardEvent.saveDiscardLog(self))
+        # Playback speed menu bar
+        self.playback_speed_menu = self.menuBar().addMenu('Playback')
 
-        self.discardBtn = QPushButton('Discard Event')
-        self.discardBtn.setEnabled(False)
-        self.discardBtn.clicked.connect(lambda: DiscardEvent.updateDiscardLog(self))
+        self.speed_1x_action = QAction(self)
+        self.speed_1x_action.setText('1.0x Speed')
+        self.speed_1x_action.setEnabled(False)
+        self.playback_speed_menu.addAction(self.speed_1x_action)
+        self.speed_1x_action.triggered.connect(lambda: PlaybackSpeed.setSpeed1x(self))
 
-        self.undoBtn = QPushButton('Undo')
-        self.undoBtn.setEnabled(False)
-        self.undoBtn.clicked.connect(lambda: DiscardEvent.undoDiscard(self))
+        self.speed_05x_action = QAction(self)
+        self.speed_05x_action.setText('0.5x Speed')
+        self.speed_05x_action.setEnabled(False)
+        self.playback_speed_menu.addAction(self.speed_05x_action)
+        self.speed_05x_action.triggered.connect(lambda: PlaybackSpeed.setSpeed05x(self))
 
-        # Slider
-        self.eventSlider = QSlider(Qt.Horizontal)
-        self.eventSlider.setFixedWidth(600)
-        self.eventSlider.setSingleStep(1)
-        self.eventSlider.setValue(0)
-        self.eventSlider.setMinimum(0)
-        self.eventSlider.setMaximum(20)
-        self.eventSlider.setTickInterval(1)
-        self.eventSlider.setTickPosition(QSlider.TicksBelow)
-        self.eventSlider.valueChanged.connect(lambda: SliderHandle.slider_changed(self))
-        self.eventSlider.sliderReleased.connect(lambda: SliderHandle.slider_released(self))
-        self.eventSlider.setEnabled(False)
+        self.speed_025x_action = QAction(self)
+        self.speed_025x_action.setText('0.25x Speed')
+        self.speed_025x_action.setEnabled(False)
+        self.playback_speed_menu.addAction(self.speed_025x_action)
+        self.speed_025x_action.triggered.connect(lambda: PlaybackSpeed.setSpeed025x(self))
+
+        # Hotkeys menu bar
+        self.hotkeys_menu = self.menuBar().addAction('Hotkeys')
+        self.hotkeys_menu.triggered.connect(self.hotkeysHint)
+
+        # Time-series object
+        self.plot_window = GraphicsLayoutWidget()
+        self.plot_window.ci.layout.setContentsMargins(0, 0, 0, 0)
+        self.plot_window.ci.layout.setSpacing(0)
+        self.plot_window.setBackground(None)
+
+        self.plot_widget = self.plot_window.addPlot(0, 0)
+        self.plot_widget.setLabel('bottom', "Time (s)")
+        self.plot_widget.setXRange(-0.5, 0.5)
+        self.plot_widget.hideAxis('left')
+        self.plot_widget.hideButtons()
+        self.plot_widget.setMouseEnabled(x=False, y=False)
 
         # EventID label
-        self.eventID = 0
-        self.eventIDLabel = QLabel('')
+        self.event_ID = 0
+        self.event_ID_label = QLabel('')
 
-        # File buttons layout
-        fileBoxLayout = QVBoxLayout()
-        fileBoxLayout.addWidget(self.videoBtn)
-        fileBoxLayout.addWidget(self.eventIndexBtn)
-        fileBoxLayout.addWidget(self.timeSeriesBtn)
+        # Slider
+        self.event_slider = QSlider(Qt.Horizontal)
+        self.event_slider.setFixedWidth(600)
+        self.event_slider.setValue(0)
+        self.event_slider.setRange(0, 20)
+        self.event_slider.setSingleStep(1)
+        self.event_slider.setTickInterval(1)
+        self.event_slider.setTickPosition(QSlider.TicksBelow)
+        self.event_slider.setEnabled(False)
+        self.event_slider.valueChanged.connect(lambda: SliderHandle.eventSliderChanged(self))
+        self.event_slider.sliderReleased.connect(lambda: SliderHandle.eventSliderReleased(self))
 
-        # Video controls layout
-        controlBoxLayout = QHBoxLayout()
-        controlBoxLayout.addWidget(self.prevBtn)
-        controlBoxLayout.addWidget(self.nextBtn)
-        controlBoxLayout.addWidget(self.replayBtn)
+        # Buttons
+        self.next_button = QPushButton('Next')
+        self.next_button.setEnabled(False)
+        self.next_button.clicked.connect(lambda: PlaybackControl.nextButtonPressed(self))
 
-        discardBoxLayout = QGridLayout()
-        discardBoxLayout.setContentsMargins(0, 0, 0, 0)
-        discardBoxLayout.addLayout(controlBoxLayout, 0, 0, 1, 3)
-        discardBoxLayout.addWidget(self.saveBtn, 1, 0, 1, 1)
-        discardBoxLayout.addWidget(self.discardBtn, 1, 1, 1, 1)
-        discardBoxLayout.addWidget(self.undoBtn, 1, 2, 1, 1)
+        self.prev_button = QPushButton('Prev')
+        self.prev_button.setEnabled(False)
+        self.prev_button.clicked.connect(lambda: PlaybackControl.prevButtonPressed(self))
 
-        # Assemble layout
-        GUILayout = QGridLayout()
-        GUILayout.setContentsMargins(0, 0, 0, 0)
-        GUILayout.addWidget(self.videoWidget, 0, 0, 8, 9, alignment=Qt.AlignCenter)
-        GUILayout.addWidget(self.plotWindow, 8, 0, 1, 9, alignment=Qt.AlignCenter)
-        GUILayout.addWidget(self.eventSlider, 9, 0, 1, 9, alignment=Qt.AlignCenter)
-        GUILayout.addWidget(self.eventIDLabel, 10, 0, 1, 9, alignment=Qt.AlignCenter)
-        GUILayout.addLayout(fileBoxLayout, 11, 0, 2, 3)
-        GUILayout.addLayout(discardBoxLayout, 11, 3, 2, 6)
-        GUILayout.setRowStretch(0, 10)
-        GUILayout.setRowStretch(7, 2)
-        GUILayout.setRowStretch(9, 1)
-        GUILayout.setRowStretch(10, 1)
+        self.replay_button = QPushButton('Play') # Is set to 'Play' until first playback occurs
+        self.replay_button.setEnabled(False)
+        self.replay_button.clicked.connect(lambda: PlaybackControl.replayButtonPressed(self))
 
-        self.setLayout(GUILayout)
-        self.mediaPlayer.setVideoOutput(self.videoWidget)
+        self.discard_button = QPushButton('Discard Event')
+        self.discard_button.setEnabled(False)
+        self.discard_button.setCheckable(True)
+        self.discard_button.setChecked(False)
+        self.discard_button.clicked.connect(lambda: DiscardEvent.discardEvent(self))
 
-    # Key presses
+    def createGUILayout(self):
+        # Control layout
+        self.control_layout = QGridLayout()
+        self.control_layout.addWidget(self.prev_button, 0, 0, 1, 3)
+        self.control_layout.addWidget(self.replay_button, 0, 3, 1, 3)
+        self.control_layout.addWidget(self.next_button, 0, 6, 1, 3)
+        self.control_layout.addWidget(self.discard_button, 1, 6, 1, 3)
+
+        # Media layout
+        self.media_layout = QGridLayout()
+        self.media_layout.addWidget(self.video_widget, 0, 0, 8, 9, alignment=Qt.AlignCenter)
+        self.media_layout.addWidget(self.plot_window, 8, 0, 1, 9, alignment=Qt.AlignCenter)
+        self.media_layout.addWidget(self.event_ID_label, 9, 0, 1, 9, alignment=Qt.AlignCenter)
+        self.media_layout.addWidget(self.event_slider, 10, 0, 1, 9, alignment=Qt.AlignCenter)
+        self.media_layout.addLayout(self.control_layout, 11, 1, 1, 7)
+        self.media_layout.setRowStretch(0, 10)
+        self.media_layout.setRowStretch(7, 2)
+        self.media_layout.setRowStretch(9, 1)
+        self.media_layout.setRowStretch(10, 1)
+
+        # Add GUI to layout
+        self.media_widget = QWidget()
+        self.media_widget.setLayout(self.media_layout)
+        self.setCentralWidget(self.media_widget)
+
+    def hotkeysHint(self):
+        hotkey_message_box = QMessageBox()
+        hotkey_message_box.setWindowTitle('Hotkeys')
+        hotkey_message_box.setText("Open video file:  1" +
+                                   "\nOpen event times file:  2" +
+                                   "\nOpen time-series file:  3"
+                                   "\n\nPrevious Event:  Right arrow" +
+                                   "\nNext Event:  Left arrow" +
+                                   "\nReplay Event:  R" +
+                                   "\nDiscard Event (or undo):  D")
+        hotkey_message_box.exec_()
+
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_1:
-            FileDialog.open_video(self)
+            FileDialog.openVideo(self)
         if event.key() == Qt.Key_2:
-            FileDialog.open_event_times(self)
+            FileDialog.openEventTimes(self)
         if event.key() == Qt.Key_3:
-            FileDialog.open_time_series(self)
+            FileDialog.openTimeSeries(self)
 
         if event.key() == Qt.Key_Right:
-            if self.nextBtn.isEnabled():
-                PlaybackControl.next_button_pressed(self)
+            if self.next_button.isEnabled():
+                PlaybackControl.nextButtonPressed(self)
         elif event.key() == Qt.Key_Left:
-            if self.prevBtn.isEnabled():
-                PlaybackControl.prev_button_pressed(self)
+            if self.prev_button.isEnabled():
+                PlaybackControl.prevButtonPressed(self)
         elif event.key() == Qt.Key_R:
-            if self.replayBtn.isEnabled():
-                PlaybackControl.replay_button_pressed(self)
+            if self.replay_button.isEnabled():
+                PlaybackControl.replayButtonPressed(self)
 
-        elif event.key() == Qt.Key_S:
-                if self.saveBtn.isEnabled():
-                    DiscardEvent.saveDiscardLog(self)
         elif event.key() == Qt.Key_D:
-            if self.discardBtn.isEnabled():
-                DiscardEvent.updateDiscardLog(self)
-        elif event.key() == Qt.Key_U:
-            if self.undoBtn.isEnabled():
-                DiscardEvent.undoDiscard(self)
+            if self.discard_button.isEnabled():
+                self.discard_button.toggle()
+                self.discard_button.repaint()
+                DiscardEvent.discardEvent(self)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = GUIWindow()
+    window = MainWindow()
     window.show()
     sys.exit(app.exec_())

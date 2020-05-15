@@ -5,15 +5,27 @@ import numpy as np
 
 
 class TimeSeriesPlot:
-    def update_time_series(self):
-        if hasattr(self, 'timeSeriesEpochs'):
-            if self.eventID < 0:
-                self.timeSeriesLine = self.plotWidget.plot(np.linspace(-0.5, 0.5, 99), self.timeSeriesEpochs[0, :],
-                                                           pen=pg.mkPen('k', width=1))
-            elif self.eventID >= 0:
-                if hasattr(self, 'timeSeriesLine'):
-                    self.timeSeriesLine.clear()
+    def __init__(self):
+        if hasattr(self, 'time_series_epochs'):
+            if self.discard_log[self.event_ID]:
+                penColor = (0, 0, 0)
+            else:
+                penColor = (220, 220, 220)
 
-                self.timeSeriesLine = self.plotWidget.plot(np.linspace(-0.5, 0.5, 99),
-                                                           self.timeSeriesEpochs[self.eventID, :],
-                                                           pen=pg.mkPen('k', width=1))
+            self.time_series_line = self.plot_widget.plot(np.linspace(-0.5, 0.5, 99), self.time_series_epochs[0, :],
+                                                       pen=pg.mkPen(color=penColor, width=1))
+            self.center_line.setMovable(True)
+
+    def updateTimeSeries(self):
+        if hasattr(self, 'time_series_epochs'):
+            if hasattr(self, 'time_series_line'):
+                self.time_series_line.clear()
+
+            if self.discard_log[self.event_ID]:
+                penColor = (0, 0, 0)
+            else:
+                penColor = (220, 220, 220)
+
+            self.time_series_line = self.plot_widget.plot(np.linspace(-0.5, 0.5, 99),
+                                                          self.time_series_epochs[self.event_ID, :],
+                                                          pen=pg.mkPen(color=penColor, width=1))
