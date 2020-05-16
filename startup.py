@@ -170,10 +170,14 @@ class MainWindow(QMainWindow):
                                    "\n\nPrevious Event:  Right arrow" +
                                    "\nNext Event:  Left arrow" +
                                    "\nReplay Event:  R" +
-                                   "\nDiscard Event (or undo):  D")
+                                   "\nDiscard Event (or undo):  D" +
+                                   "\n\n1.0x Speed:  ," +
+                                   "\n0.5x Speed:  ." +
+                                   "\n0.25x Speed:  /")
         hotkey_message_box.exec_()
 
     def keyPressEvent(self, event):
+        # File Editor
         if event.key() == Qt.Key_1:
             FileDialog.openVideo(self)
         if event.key() == Qt.Key_2:
@@ -181,6 +185,7 @@ class MainWindow(QMainWindow):
         if event.key() == Qt.Key_3:
             FileDialog.openTimeSeries(self)
 
+        # Playback
         if event.key() == Qt.Key_Right:
             if self.next_button.isEnabled():
                 PlaybackControl.nextButtonPressed(self)
@@ -190,12 +195,20 @@ class MainWindow(QMainWindow):
         elif event.key() == Qt.Key_R:
             if self.replay_button.isEnabled():
                 PlaybackControl.replayButtonPressed(self)
-
+        # Discard
         elif event.key() == Qt.Key_D:
             if self.discard_button.isEnabled():
                 self.discard_button.toggle()
                 self.discard_button.repaint()
                 DiscardEvent.discardEvent(self)
+
+        # Playback speed
+        if event.key() == Qt.Key_Comma:
+            PlaybackSpeed.setSpeed1x(self)
+        if event.key() == Qt.Key_Period:
+            PlaybackSpeed.setSpeed05x(self)
+        if event.key() == Qt.Key_Slash:
+            PlaybackSpeed.setSpeed025x(self)
 
 
 if __name__ == '__main__':

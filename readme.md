@@ -69,6 +69,12 @@ Replay event (r)
 
 Discard event (d)
 
+1.0x Speed (,)
+
+0.50x Speed (.)
+
+0.25x Speed (/)
+
 ## Bugs
 
 Almost certainly full of them. Let me know.
