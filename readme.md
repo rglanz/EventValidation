@@ -1,11 +1,12 @@
 # Event Validation Program
 
-This GUI plays through 1-s epochs of a video, allowing the user to
-discard unwanted events.
+Behavioral research requires observation. This GUI is designed to accelerate the pre-processing of behavioral data
+by playing a video in an epoch-based framework. If you've generated time-stamps for the onset of behaviors-of-interest,
+this GUI will play them back one at a time and allow you to adjust the time-stamps or discard events entirely.
 
 *Warning: This GUI is a work-in-progress and will be frequently updated.*
 
-###### (Last updated 5.15.20)
+###### (Last updated 5.16.20)
 
 ## Installation
 
