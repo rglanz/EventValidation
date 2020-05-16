@@ -68,7 +68,12 @@ class PlaybackControl:
 
     def replayButtonPressed(self):
         # Update label on first playback
-        self.replay_button.setText('Replay')
+        if self.playback_speed == 1:
+            self.replay_button.setText("Replay")
+        elif self.playback_speed == 0.5:
+            self.replay_button.setText("Replay (0.5x)")
+        elif self.playback_speed == 0.25:
+            self.replay_button.setText("Replay (0.25x)")
 
         # Update buttons
         QTimer.singleShot(10, lambda: PlaybackControl.disableButtons(self))

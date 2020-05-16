@@ -65,6 +65,7 @@ class MainWindow(QMainWindow):
 
         # Playback speed menu bar
         self.playback_speed_menu = self.menuBar().addMenu('Playback')
+        self.playback_speed = 1
 
         self.speed_1x_action = QAction(self)
         self.speed_1x_action.setText('1.0x Speed')
