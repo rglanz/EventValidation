@@ -38,5 +38,3 @@ class TimeSeriesSegmentation:
                 end_index = len(self.time_series_data)
 
             self.time_series_epochs[iEpoch, :] = self.time_series_data[start_index:end_index]
-
-            # TODO: match plotting with event time if boundary conditions are violated
