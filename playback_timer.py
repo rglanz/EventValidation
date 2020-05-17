@@ -70,3 +70,7 @@ class PlaybackTimer:
             self.discard_button.setChecked(False)
         else:
             self.discard_button.setChecked(True)
+
+        self.speed_1x_action.setEnabled(True)
+        self.speed_05x_action.setEnabled(True)
+        self.speed_025x_action.setEnabled(True)

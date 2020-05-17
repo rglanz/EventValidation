@@ -87,3 +87,6 @@ class PlaybackControl:
         self.replay_button.setEnabled(False)
         self.discard_button.setEnabled(False)
         self.event_slider.setEnabled(False)
+        self.speed_1x_action.setEnabled(False)
+        self.speed_05x_action.setEnabled(False)
+        self.speed_025x_action.setEnabled(False)

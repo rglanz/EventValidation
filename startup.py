@@ -205,11 +205,14 @@ class MainWindow(QMainWindow):
 
         # Playback speed
         if event.key() == Qt.Key_Comma:
-            PlaybackSpeed.setSpeed1x(self)
+            if self.speed_1x_action.isEnabled():
+                PlaybackSpeed.setSpeed1x(self)
         if event.key() == Qt.Key_Period:
-            PlaybackSpeed.setSpeed05x(self)
+            if self.speed_05x_action.isEnabled():
+                PlaybackSpeed.setSpeed05x(self)
         if event.key() == Qt.Key_Slash:
-            PlaybackSpeed.setSpeed025x(self)
+            if self.speed_025x_action.isEnabled():
+                PlaybackSpeed.setSpeed025x(self)
 
 
 if __name__ == '__main__':
