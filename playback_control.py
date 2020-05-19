@@ -90,3 +90,4 @@ class PlaybackControl:
         self.speed_1x_action.setEnabled(False)
         self.speed_05x_action.setEnabled(False)
         self.speed_025x_action.setEnabled(False)
+        self.center_line.setMovable(False)

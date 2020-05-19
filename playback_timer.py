@@ -74,3 +74,9 @@ class PlaybackTimer:
         self.speed_1x_action.setEnabled(True)
         self.speed_05x_action.setEnabled(True)
         self.speed_025x_action.setEnabled(True)
+
+        if hasattr(self, 'time_series_data'):
+            if self.discard_log[self.event_ID]:
+                self.center_line.setMovable(True)
+            else:
+                self.center_line.setMovable(False)

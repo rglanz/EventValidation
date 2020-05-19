@@ -7,6 +7,7 @@ from PyQt5.QtMultimedia import QMediaPlayer
 from PyQt5.QtCore import Qt, QRect
 from PyQt5.QtGui import QPalette
 from pyqtgraph import GraphicsLayoutWidget
+import pyqtgraph as pg
 import sys
 from file_dialog import FileDialog
 from playback_control import PlaybackControl
@@ -101,6 +102,7 @@ class MainWindow(QMainWindow):
         self.plot_widget.hideAxis('left')
         self.plot_widget.hideButtons()
         self.plot_widget.setMouseEnabled(x=False, y=False)
+        self.plot_widget.setMenuEnabled(False)
 
         # EventID label
         self.event_ID = 0
