@@ -6,7 +6,7 @@ this GUI will play them back one at a time and allow you to adjust the time-stam
 
 *Warning: This GUI is a work-in-progress and will be frequently updated.*
 
-###### (Last updated 5.16.20)
+###### (Last updated 5.24.20)
 
 ## Installation
 
@@ -46,8 +46,10 @@ Type ```python startup.py```
 
 5. Adjust the event time.
         
-        Drag the dashed line at time-lag 0 to adjust the event time. This overwrites the selected
-        'Event Times.csv' file.
+        Drag the dashed line at time-lag 0 to adjust the event time. Hold down Alt and drag the dashed line
+        to add an event before or after the current event.
+        
+        Warning: These actions overwrite the selected 'Event Times.csv' file.
 
 6. Use the discard button to update the discard log file. 
 
@@ -69,6 +71,8 @@ Previous event (left arrow)
 Replay event (r)
 
 Discard event (d)
+
+Add event (hold Alt + drag center line)
 
 1.0x Speed (,)
 

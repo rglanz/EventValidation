@@ -49,7 +49,7 @@ class FileDialog:
             # Re-center GUI
             _, _, gui_width, gui_height = self.frameGeometry().getRect()
             self.setGeometry(int(round(0.5*(self.screen_width - gui_width))),
-                             int(round(0.5*(self.screen_height - gui_height))), gui_width, gui_height)
+                             0, gui_width, self.screen_height)
 
             # Re-size slider
             self.event_slider.setFixedWidth(self.video_width)

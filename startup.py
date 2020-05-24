@@ -14,6 +14,7 @@ from playback_control import PlaybackControl
 from discard_event import DiscardEvent
 from slider_handle import SliderHandle
 from playback_speed import PlaybackSpeed
+from add_event import AddEvent
 
 
 class MainWindow(QMainWindow):
@@ -174,6 +175,7 @@ class MainWindow(QMainWindow):
                                    "\nNext Event:  Left arrow" +
                                    "\nReplay Event:  R" +
                                    "\nDiscard Event (or undo):  D" +
+                                   "\nAdd Event:  Hold Alt and move center line"
                                    "\n\n1.0x Speed:  ," +
                                    "\n0.5x Speed:  ." +
                                    "\n0.25x Speed:  /")
@@ -215,6 +217,16 @@ class MainWindow(QMainWindow):
         if event.key() == Qt.Key_Slash:
             if self.speed_025x_action.isEnabled():
                 PlaybackSpeed.setSpeed025x(self)
+
+        # Add event
+        if event.key() == Qt.Key_Alt:
+            if (hasattr(self, 'time_series_data') and not self.discard_button.isChecked()):
+                AddEvent.__init__(self)
+
+    def keyReleaseEvent(self, event):
+        if event.key() == Qt.Key_Alt and not event.isAutoRepeat():
+            if (hasattr(self, 'time_series_data') and not self.discard_button.isChecked()):
+                AddEvent.altReleased(self)
 
 
 if __name__ == '__main__':
