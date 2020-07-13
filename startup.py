@@ -96,6 +96,7 @@ class MainWindow(QMainWindow):
         self.plot_window.ci.layout.setContentsMargins(0, 0, 0, 0)
         self.plot_window.ci.layout.setSpacing(0)
         self.plot_window.setBackground(None)
+        self.setMouseTracking(False)
 
         self.plot_widget = self.plot_window.addPlot(0, 0)
         self.plot_widget.setLabel('bottom', "Time (s)")
