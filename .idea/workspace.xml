@@ -24,13 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="New output file format and event-flagging feature.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo Files/Demo Video.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Demo Video.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo Files/Event Times.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Event Times.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo Files/Time-series.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Time-series.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="Updated readme." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +57,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -333,7 +328,21 @@
       <option name="project" value="LOCAL" />
       <updated>1594752087024</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Updated readme.">
+      <created>1594753178958</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1594753178958</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Updated readme.">
+      <created>1594753385636</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1594753385636</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -369,19 +378,20 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Refactored UndoDiscard class, rolled into DiscardEvent class." />
     <MESSAGE value="Added time_adjust functionality." />
     <MESSAGE value="Major refactor, playback speed adjustment, etc." />
     <MESSAGE value="Fixed math error on boundary conditions." />
     <MESSAGE value="Added playback speed hotkeys." />
-    <MESSAGE value="Updated readme." />
     <MESSAGE value="Replaced demo files." />
     <MESSAGE value="Specify y-axes bounds." />
     <MESSAGE value="Updated demo files." />
     <MESSAGE value="Disable plot context menu." />
     <MESSAGE value="Hold Alt + drag to create a new event." />
     <MESSAGE value="New output file format and event-flagging feature." />
-    <option name="LAST_COMMIT_MESSAGE" value="New output file format and event-flagging feature." />
+    <MESSAGE value="Updated readme." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated readme." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="234" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589399126366">
@@ -447,11 +457,11 @@
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589395213642" />
     <state x="383" y="262" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589399091748" />
     <state x="287" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1594683309457" />
-    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594752089932">
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594753412830">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="-1368" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589574707606" />
     <state x="552" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402312408" />
-    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594752089932" />
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594753412830" />
   </component>
 </project>
