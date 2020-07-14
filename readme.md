@@ -1,8 +1,10 @@
 # Event Validation Program
 
-Behavioral research requires observation. This GUI is designed to accelerate the pre-processing of behavioral data
-by playing a video in an epoch-based framework. If you've generated time stamps for the onset of behaviors-of-interest,
-this GUI will play them back one at a time and allow you to adjust the time stamps or discard events entirely.
+Behavioral research requires observation. This GUI is designed to efficiently validate blindly-generated
+events of interest in an epoch-based framework. If you've generated time stamps for the onset of behaviors-of-interest,
+this GUI will play them back one at a time and allow you to make adjustments to time stamps, or discard them entirely.
+
+![GUI](https://github.com/rglanz/EventValidation/blob/assets/GUI_screen.png?raw=true)
 
 ###### (Last updated 7.14.20)
 
@@ -24,7 +26,7 @@ Type ```python startup.py```
 
 ## Typical use case
 
-1. Open Video
+1. Load Video
 
 2. Event Times
         
@@ -36,22 +38,22 @@ Type ```python startup.py```
         entry should represent the value of the time-series at that
         particular frame.
         
-        The time series will not be loaded if its length does not match
+        The time-series will not be loaded if its length does not match
         the number of video frames.
         
-        To adjust the timing of events and add new events, a time series must be loaded.
+        To adjust the timing of events and add new events, a time-series must be loaded.
         
 4. Control video playback with the next, prev, and replay buttons.
 
-5. Adjust the event time.
+5. Adjust the events.
         
-        Drag the dashed line at time-lag 0 to adjust the event time. Hold down Alt and drag the dashed line
-        to add an event before or after the current event.
+        To adjust the event onset time, drag the dashed line at time-lag 0 to the desired position. To add a new event,
+        hold down Alt and drag the dashed line to a new position.
 
-6. Use the discard/flag button to update the output file. 
+6. Use the discard/flag button to update the output file.
 
         Upon loading an Event Times file, two new files named [video_file_name]_output.pkl and 
-        [video_file_name]_output.csv are created (or loaded, if it exists already).
+        [video_file_name]_output.csv are created (or loaded, if they exist already).
         
         The output file contains the original and adjusted (if applicable) event times, whether the event has been
         discarded (1) or not (0), whether the event has been flagged (1) or not (0), and the last event viewed

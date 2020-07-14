@@ -24,20 +24,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="Hold Alt + drag to create a new event.">
-      <change afterPath="$PROJECT_DIR$/flag_event.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save_output.py" afterDir="false" />
+    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="New output file format and event-flagging feature.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/add_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discard_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/discard_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_dialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playback_control.py" beforeDir="false" afterPath="$PROJECT_DIR$/playback_control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playback_timer.py" beforeDir="false" afterPath="$PROJECT_DIR$/playback_timer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo Files/Demo Video.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Demo Video.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo Files/Event Times.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Event Times.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo Files/Time-series.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Time-series.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slider_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/slider_handle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startup.py" beforeDir="false" afterPath="$PROJECT_DIR$/startup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/time_adjust.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_adjust.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/time_series_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_series_plot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590351267230</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="New output file format and event-flagging feature.">
+      <created>1594752087023</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1594752087024</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -381,7 +380,8 @@
     <MESSAGE value="Updated demo files." />
     <MESSAGE value="Disable plot context menu." />
     <MESSAGE value="Hold Alt + drag to create a new event." />
-    <option name="LAST_COMMIT_MESSAGE" value="Hold Alt + drag to create a new event." />
+    <MESSAGE value="New output file format and event-flagging feature." />
+    <option name="LAST_COMMIT_MESSAGE" value="New output file format and event-flagging feature." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="234" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589399126366">
@@ -397,30 +397,30 @@
     </state>
     <state x="739" y="293" key="FileChooserDialogImpl/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589398132487" />
     <state x="554" y="245" key="FileChooserDialogImpl/0.23.1440.877@0.23.1440.877" timestamp="1594683296780" />
-    <state width="1419" height="230" key="GridCell.Tab.0.bottom" timestamp="1594751810968">
+    <state width="1419" height="230" key="GridCell.Tab.0.bottom" timestamp="1594752288746">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589576667737" />
     <state width="1899" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
-    <state width="1419" height="230" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594751810968" />
-    <state width="1419" height="230" key="GridCell.Tab.0.center" timestamp="1594751810968">
+    <state width="1419" height="230" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594752288746" />
+    <state width="1419" height="230" key="GridCell.Tab.0.center" timestamp="1594752288745">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="281" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589576667736" />
     <state width="1899" height="321" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
-    <state width="1419" height="230" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594751810968" />
-    <state width="1419" height="230" key="GridCell.Tab.0.left" timestamp="1594751810967">
+    <state width="1419" height="230" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594752288745" />
+    <state width="1419" height="230" key="GridCell.Tab.0.left" timestamp="1594752288745">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="281" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589576667736" />
     <state width="1899" height="321" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
-    <state width="1419" height="230" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594751810967" />
-    <state width="1419" height="230" key="GridCell.Tab.0.right" timestamp="1594751810968">
+    <state width="1419" height="230" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594752288745" />
+    <state width="1419" height="230" key="GridCell.Tab.0.right" timestamp="1594752288746">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="281" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589576667736" />
     <state width="1899" height="321" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402247013" />
-    <state width="1419" height="230" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594751810968" />
+    <state width="1419" height="230" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594752288746" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1594733837031">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -447,10 +447,11 @@
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589395213642" />
     <state x="383" y="262" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589399091748" />
     <state x="287" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1594683309457" />
-    <state x="-1368" y="280" key="Vcs.Push.Dialog.v2" timestamp="1589574707606">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594752089932">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="-1368" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589574707606" />
     <state x="552" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402312408" />
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594752089932" />
   </component>
 </project>
