@@ -2,12 +2,11 @@
 
 import pyqtgraph as pg
 import numpy as np
-from PyQt5.QtGui import QLinearGradient, QPen, QColor
 
 class TimeSeriesPlot:
     def __init__(self):
         if hasattr(self, 'time_series_epochs'):
-            if self.discard_log[self.event_ID]:
+            if self.discard_log[self.event_ID] == 0:
                 self.time_series_line = self.plot_widget.plot(np.linspace(-0.5, 0.5, 99), self.time_series_epochs[self.event_ID, :],
                                                               pen=pg.mkPen(color=(0, 0, 0), width=1))
             else:
@@ -26,7 +25,7 @@ class TimeSeriesPlot:
             if hasattr(self, 'time_series_line'):
                 self.time_series_line.clear()
 
-            if self.discard_log[self.event_ID]:
+            if self.discard_log[self.event_ID] == 0:
                 self.time_series_line = self.plot_widget.plot(np.linspace(-0.5, 0.5, 99), self.time_series_epochs[self.event_ID, :],
                                                               pen=pg.mkPen(color=(0, 0, 0), width=1))
             else:

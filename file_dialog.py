@@ -7,12 +7,13 @@ import cv2  # must be installed as headless, or will collide with Qt
 import numpy as np
 import pyqtgraph as pg
 import os
+from pathlib import Path
 from video_segmentation import VideoSegmentation
 from time_series_segmentation import TimeSeriesSegmentation
 from time_series_plot import TimeSeriesPlot
-from discard_event import DiscardEvent
 from slider_handle import SliderHandle
 from time_adjust import TimeAdjust
+from save_output import SaveOutput
 
 
 class FileDialog:
@@ -23,6 +24,7 @@ class FileDialog:
         video_dialog.selectNameFilter("Videos (*.mp4 *.avi *.mov *.flv *.wmv)")
         video_dialog.exec_()
         self.video_path = video_dialog.selectedFiles()
+        self.folder_path = Path(self.video_path[0])
 
         if len(self.video_path) != 0:
             self.video_path = self.video_path[0]    # Convert list to string
@@ -74,6 +76,7 @@ class FileDialog:
             # Load event times
             with open(self.event_times_path, 'r', encoding='utf-8-sig') as f:
                 self.event_times_data = np.genfromtxt(f, dtype=float, delimiter=',')
+            self.event_times_data_orig = np.array(self.event_times_data)
             self.event_length = len(self.event_times_data)
 
             # Update event label
@@ -97,14 +100,14 @@ class FileDialog:
                                                         style=Qt.DashLine), bounds=[-0.5, 0.5])
             self.center_line.sigPositionChangeFinished.connect(lambda: TimeAdjust.centerLineAdjusted(self))
 
+            # Check for existing output file
+            SaveOutput.__init__(self)
+
             # Video segmentation
             VideoSegmentation.__init__(self)
 
             # Enable event slider
             SliderHandle.__init__(self)
-
-            # Check for existing discard log
-            DiscardEvent.__init__(self)
 
     def openTimeSeries(self):
         time_series_dialog = QFileDialog(self)

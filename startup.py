@@ -7,7 +7,6 @@ from PyQt5.QtMultimedia import QMediaPlayer
 from PyQt5.QtCore import Qt, QRect
 from PyQt5.QtGui import QPalette
 from pyqtgraph import GraphicsLayoutWidget
-import pyqtgraph as pg
 import sys
 from file_dialog import FileDialog
 from playback_control import PlaybackControl
@@ -15,6 +14,7 @@ from discard_event import DiscardEvent
 from slider_handle import SliderHandle
 from playback_speed import PlaybackSpeed
 from add_event import AddEvent
+from flag_event import FlagEvent
 
 
 class MainWindow(QMainWindow):
@@ -141,6 +141,12 @@ class MainWindow(QMainWindow):
         self.discard_button.setChecked(False)
         self.discard_button.clicked.connect(lambda: DiscardEvent.discardEvent(self))
 
+        self.flag_button = QPushButton('Flag Event')
+        self.flag_button.setEnabled(False)
+        self.flag_button.setCheckable(True)
+        self.flag_button.setChecked(False)
+        self.flag_button.clicked.connect(lambda: FlagEvent.__init__(self))
+
     def createGUILayout(self):
         # Control layout
         self.control_layout = QGridLayout()
@@ -148,6 +154,7 @@ class MainWindow(QMainWindow):
         self.control_layout.addWidget(self.replay_button, 0, 3, 1, 3)
         self.control_layout.addWidget(self.next_button, 0, 6, 1, 3)
         self.control_layout.addWidget(self.discard_button, 1, 6, 1, 3)
+        self.control_layout.addWidget(self.flag_button, 1, 0, 1, 3)
 
         # Media layout
         self.media_layout = QGridLayout()
@@ -176,6 +183,7 @@ class MainWindow(QMainWindow):
                                    "\nNext Event:  Left arrow" +
                                    "\nReplay Event:  R" +
                                    "\nDiscard Event (or undo):  D" +
+                                   "\nFlag Event:  F" +
                                    "\nAdd Event:  Hold Alt and move center line"
                                    "\n\n1.0x Speed:  ," +
                                    "\n0.5x Speed:  ." +
@@ -207,6 +215,13 @@ class MainWindow(QMainWindow):
                 self.discard_button.toggle()
                 self.discard_button.repaint()
                 DiscardEvent.discardEvent(self)
+
+        # Flag
+        elif event.key() == Qt.Key_F:
+            if self.flag_button.isEnabled():
+                self.flag_button.toggle()
+                self.flag_button.repaint()
+                FlagEvent.__init__(self)
 
         # Playback speed
         if event.key() == Qt.Key_Comma:

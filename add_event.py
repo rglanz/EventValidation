@@ -6,7 +6,7 @@ import numpy as np
 from video_segmentation import VideoSegmentation
 from time_series_segmentation import TimeSeriesSegmentation
 from time_series_plot import TimeSeriesPlot
-from playback_control import PlaybackControl
+from save_output import SaveOutput
 
 
 class AddEvent:
@@ -29,23 +29,29 @@ class AddEvent:
         if new_event_time <= original_event_time:
             # Update event times
             self.event_times_data = np.insert(self.event_times_data, self.event_ID, new_event_time)
-            np.savetxt(self.event_times_path, self.event_times_data)
+            self.event_times_data_orig = np.insert(self.event_times_data_orig, self.event_ID, np.NaN)
 
             # Update discard log
-            self.discard_log = np.insert(self.discard_log, self.event_ID, 1)
-            np.savetxt(self.discard_file_path, self.discard_log, delimiter=',', fmt='%i')
+            self.discard_log = np.insert(self.discard_log, self.event_ID, 0)
+
+            # Save output
+            SaveOutput.saveData(self)
 
         elif new_event_time > original_event_time:
             # Update event times
             self.event_times_data = np.insert(self.event_times_data, self.event_ID + 1, new_event_time)
-            np.savetxt(self.event_times_path, self.event_times_data)
+            self.event_times_data_orig = np.insert(self.event_times_data_orig, self.event_ID + 1, np.NaN)
 
             # Update discard log
-            self.discard_log = np.insert(self.discard_log, self.event_ID + 1, 1)
-            np.savetxt(self.discard_file_path, self.discard_log, delimiter=',', fmt='%i')
+            self.discard_log = np.insert(self.discard_log, self.event_ID + 1, 0)
 
             # Update event ID
             self.event_ID += 1
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID[self.event_ID] = 1
+
+            # Save output
+            SaveOutput.saveData(self)
 
         # Update event label
         self.event_length += 1

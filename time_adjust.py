@@ -4,6 +4,7 @@ import numpy as np
 from video_segmentation import VideoSegmentation
 from time_series_plot import TimeSeriesPlot
 from time_series_segmentation import TimeSeriesSegmentation
+from save_output import SaveOutput
 
 
 class TimeAdjust:
@@ -14,7 +15,9 @@ class TimeAdjust:
         new_event_time = original_event_time + new_center_line_position[0]
 
         self.event_times_data[self.event_ID] = new_event_time
-        np.savetxt(self.event_times_path, self.event_times_data)
+
+        # Save output
+        SaveOutput.saveData(self)
 
         # Update frameIndex data
         VideoSegmentation.__init__(self)

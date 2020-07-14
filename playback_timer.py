@@ -66,17 +66,23 @@ class PlaybackTimer:
         self.event_slider.setEnabled(True)
 
         self.discard_button.setEnabled(True)
-        if self.discard_log[self.event_ID]:
+        if self.discard_log[self.event_ID] == 0:
             self.discard_button.setChecked(False)
         else:
             self.discard_button.setChecked(True)
+
+        self.flag_button.setEnabled(True)
+        if self.event_flags[self.event_ID] == 0:
+            self.flag_button.setChecked(False)
+        else:
+            self.flag_button.setChecked(True)
 
         self.speed_1x_action.setEnabled(True)
         self.speed_05x_action.setEnabled(True)
         self.speed_025x_action.setEnabled(True)
 
         if hasattr(self, 'time_series_data'):
-            if self.discard_log[self.event_ID]:
+            if self.discard_log[self.event_ID] == 0:
                 self.center_line.setMovable(True)
             else:
                 self.center_line.setMovable(False)

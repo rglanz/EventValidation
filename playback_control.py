@@ -1,8 +1,10 @@
 # This Python file uses the following encoding: utf-8
 
 from PyQt5.QtCore import QTimer
+import numpy as np
 from playback_timer import PlaybackTimer
 from time_series_plot import TimeSeriesPlot
+from save_output import SaveOutput
 
 
 class PlaybackControl:
@@ -10,6 +12,9 @@ class PlaybackControl:
         # Update event ID
         if self.event_ID < self.event_length - 1:
             self.event_ID += 1
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID[self.event_ID] = 1
+            SaveOutput.saveData(self)
 
         # Update buttons
         QTimer.singleShot(10, lambda: PlaybackControl.disableButtons(self))
@@ -26,7 +31,7 @@ class PlaybackControl:
         self.event_slider.setValue(self.event_ID)
 
         # Update center line
-        if self.discard_log[self.event_ID]:
+        if self.discard_log[self.event_ID] == 0:
             self.center_line.setMovable(True)
             self.center_line.setPen(color=(0, 0, 0))
         else:
@@ -40,6 +45,9 @@ class PlaybackControl:
         # Update event ID
         if self.event_ID > 0:
             self.event_ID -= 1
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID[self.event_ID] = 1
+            SaveOutput.saveData(self)
 
         # Update buttons
         QTimer.singleShot(10, lambda: PlaybackControl.disableButtons(self))
@@ -53,7 +61,7 @@ class PlaybackControl:
             TimeSeriesPlot.updateTimeSeries(self)
 
         # Update center line
-        if self.discard_log[self.event_ID]:
+        if self.discard_log[self.event_ID] == 0:
             self.center_line.setMovable(True)
             self.center_line.setPen(color=(0, 0, 0))
         else:
@@ -86,6 +94,7 @@ class PlaybackControl:
         self.prev_button.setEnabled(False)
         self.replay_button.setEnabled(False)
         self.discard_button.setEnabled(False)
+        self.flag_button.setEnabled(False)
         self.event_slider.setEnabled(False)
         self.speed_1x_action.setEnabled(False)
         self.speed_05x_action.setEnabled(False)

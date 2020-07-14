@@ -1,12 +1,10 @@
 # Event Validation Program
 
 Behavioral research requires observation. This GUI is designed to accelerate the pre-processing of behavioral data
-by playing a video in an epoch-based framework. If you've generated time-stamps for the onset of behaviors-of-interest,
-this GUI will play them back one at a time and allow you to adjust the time-stamps or discard events entirely.
+by playing a video in an epoch-based framework. If you've generated time stamps for the onset of behaviors-of-interest,
+this GUI will play them back one at a time and allow you to adjust the time stamps or discard events entirely.
 
-*Warning: This GUI is a work-in-progress and will be frequently updated.*
-
-###### (Last updated 5.24.20)
+###### (Last updated 7.14.20)
 
 ## Installation
 
@@ -30,8 +28,7 @@ Type ```python startup.py```
 
 2. Event Times
         
-        Select a csv file with event times in seconds. (If you adjust the event times within the GUI, this file will
-        be overwritten, so save a backup!)
+        Select a csv file with event times in seconds.
         
 3. Time Series (Optional)
 
@@ -42,20 +39,25 @@ Type ```python startup.py```
         The time series will not be loaded if its length does not match
         the number of video frames.
         
+        To adjust the timing of events and add new events, a time series must be loaded.
+        
 4. Control video playback with the next, prev, and replay buttons.
 
 5. Adjust the event time.
         
         Drag the dashed line at time-lag 0 to adjust the event time. Hold down Alt and drag the dashed line
         to add an event before or after the current event.
+
+6. Use the discard/flag button to update the output file. 
+
+        Upon loading an Event Times file, two new files named [video_file_name]_output.pkl and 
+        [video_file_name]_output.csv are created (or loaded, if it exists already).
         
-        Warning: These actions overwrite the selected 'Event Times.csv' file.
-
-6. Use the discard button to update the discard log file. 
-
-        Upon loading an Event Times file, a new file called [video_file_name]_discard_log.csv
-        is created (or loaded, if it exists already). Each event is stored as a 1 (accepted event)
-        or 0 (discarded event). This saves automatically.
+        The output file contains the original and adjusted (if applicable) event times, whether the event has been
+        discarded (1) or not (0), whether the event has been flagged (1) or not (0), and the last event viewed
+        (for picking up where you left off).
+        
+        If you added an event, it will have an original time entry of 'nan'.
 
 ## Hotkeys
 Open video file (1)
@@ -71,6 +73,8 @@ Previous event (left arrow)
 Replay event (r)
 
 Discard event (d)
+
+Flag event (f)
 
 Add event (hold Alt + drag center line)
 
