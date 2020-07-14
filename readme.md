@@ -4,7 +4,7 @@ Behavioral research requires observation. This GUI is designed to efficiently va
 events of interest in an epoch-based framework. If you've generated time stamps for the onset of behaviors-of-interest,
 this GUI will play them back one at a time and allow you to make adjustments to time stamps, or discard them entirely.
 
-![GUI](https://github.com/rglanz/EventValidation/blob/assets/GUI_screen.png?raw=true)
+![GUI](/assets/GUI_screen.png?raw=true)
 
 ###### (Last updated 7.14.20)
 
