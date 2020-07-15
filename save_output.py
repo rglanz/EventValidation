@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 import os
-from PyQt5.QtWidgets import QMessageBox, QPushButton
+from PyQt5.QtWidgets import QMessageBox, QPushButton, QSlider
 
 
 class SaveOutput:
@@ -23,15 +23,18 @@ class SaveOutput:
 
             if user_response == 1:  # Load discard log
                 self.output_df = pd.read_pickle(self.output_path)
-                self.event_ID = self.output_df.index[self.output_df["Last Event"] == 1].to_list()[0]
 
                 # Create numpy arrays to modify
-                self.discard_log = self.output_df["Discarded"].to_numpy(dtype=np.int)
-                self.last_event_ID = self.output_df["Last Event"].to_numpy(dtype=np.int)
+                self.event_times_data_orig = self.output_df["Orig. Time"].to_numpy(dtype=np.float64)
                 self.event_times_data = self.output_df["Adj. Time"].to_numpy(dtype=np.float64)
-                self.event_flags = self.output_df["Flagged"].to_numpy(dtype=np.float64)
+                self.discard_log = self.output_df["Discarded"].to_numpy(dtype=np.int)
+                self.event_flags = self.output_df["Flagged"].to_numpy(dtype=np.int)
+                self.last_event_ID = self.output_df["Last Event"].to_numpy(dtype=np.int)
 
-                # Go to last event
+                # Update event ID
+                self.event_ID = np.where(self.last_event_ID == 1)[0][0]
+
+                # Set event label
                 self.event_ID_label.setText('Event ' + str(self.event_ID) + ' of ' + str(self.event_length - 1))
                 self.event_ID_label.repaint()
 
@@ -44,6 +47,11 @@ class SaveOutput:
                     self.center_line.setPen(color=(220, 220, 220))
 
                 # Update slider
+                self.event_slider.setRange(0, self.event_length - 1)
+                self.event_slider.setTickInterval(round(self.event_length / 20))
+                self.event_slider.setTickPosition(QSlider.TicksBelow)
+                self.event_slider.setVisible(True)
+                self.event_slider.setEnabled(True)
                 self.event_slider.setValue(self.event_ID)
 
                 # Refresh frame
@@ -54,6 +62,7 @@ class SaveOutput:
 
             elif user_response == 0: # Overwrite
                 # Create numpy arrays to modify
+
                 self.discard_log = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
                 self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
                 self.last_event_ID[self.event_ID] = 1

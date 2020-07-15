@@ -37,6 +37,10 @@ class AddEvent:
             # Update flagged events
             self.event_flags = np.insert(self.event_flags, self.event_ID, 0)
 
+            # Update last event ID
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID[self.event_ID] =  1
+
             # Save output
             SaveOutput.saveData(self)
 
@@ -51,10 +55,12 @@ class AddEvent:
             # Update flagged events
             self.event_flags = np.insert(self.event_flags, self.event_ID + 1, 0)
 
+            # Update last event ID
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID[self.event_ID + 1] =  1
+
             # Update event ID
             self.event_ID += 1
-            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
-            self.last_event_ID[self.event_ID] = 1
 
             # Save output
             SaveOutput.saveData(self)

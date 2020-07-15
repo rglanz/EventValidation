@@ -25,7 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="Add event bug fix.">
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/add_event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_dialog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/save_output.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_output.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +70,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="pyconsole" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myIpythonEnabled" value="false" />
   </component>
   <component name="RunManager" selected="Python.startup">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -352,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594771841378</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Bug fix">
+      <created>1594771928420</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1594771928420</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -402,7 +415,8 @@
     <MESSAGE value="New output file format and event-flagging feature." />
     <MESSAGE value="Updated readme." />
     <MESSAGE value="Add event bug fix." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add event bug fix." />
+    <MESSAGE value="Bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="234" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589399126366">
@@ -462,17 +476,17 @@
     </state>
     <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589574522271" />
     <state width="1419" height="286" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1594733837031" />
-    <state x="287" y="178" key="SettingsEditor" timestamp="1594683309457">
+    <state x="287" y="178" key="SettingsEditor" timestamp="1594773750239">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589395213642" />
     <state x="383" y="262" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589399091748" />
-    <state x="287" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1594683309457" />
-    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594771844465">
+    <state x="287" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1594773750239" />
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594771930265">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="-1368" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589574707606" />
     <state x="552" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402312408" />
-    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594771844465" />
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594771930265" />
   </component>
 </project>

@@ -2,7 +2,7 @@
 
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtMultimedia import QMediaContent
-from PyQt5.QtCore import QUrl, Qt, QRect
+from PyQt5.QtCore import QUrl, Qt
 import cv2  # must be installed as headless, or will collide with Qt
 import numpy as np
 import pyqtgraph as pg
