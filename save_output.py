@@ -49,7 +49,7 @@ class SaveOutput:
                 # Refresh frame
                 self.media_player.setPosition(np.round(1000 * self.event_times_data[self.event_ID] / self.Fs) - \
                                               1000 * int(np.round(0.5 * self.Fs)))
-                self.media_player.play(1/self.Fs)
+                self.media_player.play()
                 self.media_player.pause()
 
             elif user_response == 0: # Overwrite

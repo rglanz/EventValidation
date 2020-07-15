@@ -24,10 +24,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="Updated readme.">
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+    <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="Add event bug fix.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/add_event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/save_output.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_output.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -347,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594753385636</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add event bug fix.">
+      <created>1594771841378</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1594771841378</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -396,7 +401,8 @@
     <MESSAGE value="Hold Alt + drag to create a new event." />
     <MESSAGE value="New output file format and event-flagging feature." />
     <MESSAGE value="Updated readme." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated readme." />
+    <MESSAGE value="Add event bug fix." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add event bug fix." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="234" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589399126366">
@@ -462,11 +468,11 @@
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589395213642" />
     <state x="383" y="262" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589399091748" />
     <state x="287" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1594683309457" />
-    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594753412830">
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2" timestamp="1594771844465">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="-1368" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589574707606" />
     <state x="552" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1920.0.1920.1040@0.0.1920.1160" timestamp="1589402312408" />
-    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594753412830" />
+    <state x="414" y="259" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594771844465" />
   </component>
 </project>
