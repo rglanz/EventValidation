@@ -34,6 +34,9 @@ class AddEvent:
             # Update discard log
             self.discard_log = np.insert(self.discard_log, self.event_ID, 0)
 
+            # Update flagged events
+            self.event_flags = np.insert(self.event_flags, self.event_ID, 0)
+
             # Save output
             SaveOutput.saveData(self)
 
@@ -44,6 +47,9 @@ class AddEvent:
 
             # Update discard log
             self.discard_log = np.insert(self.discard_log, self.event_ID + 1, 0)
+
+            # Update flagged events
+            self.event_flags = np.insert(self.event_flags, self.event_ID + 1, 0)
 
             # Update event ID
             self.event_ID += 1

@@ -62,7 +62,7 @@ class SaveOutput:
                 # Create dataframe
                 self.output_df = pd.DataFrame({"Orig. Time": self.event_times_data_orig,
                                                "Adj. Time": self.event_times_data,
-                                               "Discard": self.discard_log,
+                                               "Discarded": self.discard_log,
                                                "Flagged": self.event_flags,
                                                "Last Event": self.last_event_ID})
 
@@ -79,7 +79,7 @@ class SaveOutput:
             # Create dataframe
             self.output_df = pd.DataFrame({"Orig. Time": self.event_times_data_orig,
                                            "Adj. Time": self.event_times_data,
-                                           "Discard": self.discard_log,
+                                           "Discarded": self.discard_log,
                                            "Flagged": self.event_flags,
                                            "Last Event": self.last_event_ID})
             # Save dataframe
@@ -90,7 +90,7 @@ class SaveOutput:
         # Update dataframe
         self.output_df = pd.DataFrame({"Orig. Time": self.event_times_data_orig,
                                        "Adj. Time": self.event_times_data,
-                                       "Discard": self.discard_log,
+                                       "Discarded": self.discard_log,
                                        "Flagged": self.event_flags,
                                        "Last Event": self.last_event_ID})
 
