@@ -4,9 +4,9 @@ Behavioral research requires observation. This GUI is designed to efficiently va
 events of interest in an epoch-based framework. If you've generated time stamps for the onset of behaviors-of-interest,
 this GUI will play them back one at a time and allow you to make adjustments to time stamps, or discard them entirely.
 
-![GUI](/assets/GUI_screen.png?raw=true)
+![GUI](/assets/GUI_use.gif?raw=true)
 
-###### (Last updated 7.14.20)
+###### (Last updated 8.7.21)
 
 ## Installation
 
@@ -85,7 +85,3 @@ Add event (hold Alt + drag center line)
 0.50x Speed (.)
 
 0.25x Speed (/)
-
-## Bugs
-
-Almost certainly full of them. Let me know.
