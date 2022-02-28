@@ -180,7 +180,7 @@ class MainWindow(QMainWindow):
                                    "\nOpen event times file:  2" +
                                    "\nOpen time-series file:  3"
                                    "\n\nPrevious Event:  Right arrow" +
-                                   "\nNext Event:  Left arrow" +
+                                   "\nNext Event:  Left arrow/Right-click" +
                                    "\nReplay Event:  R" +
                                    "\nDiscard Event (or undo):  D" +
                                    "\nFlag Event:  F" +
@@ -201,6 +201,9 @@ class MainWindow(QMainWindow):
 
         # Playback
         if event.key() == Qt.Key_Right:
+            if self.next_button.isEnabled():
+                PlaybackControl.nextButtonPressed(self)
+        elif event.key() == Qt.RightButton:
             if self.next_button.isEnabled():
                 PlaybackControl.nextButtonPressed(self)
         elif event.key() == Qt.Key_Left:
