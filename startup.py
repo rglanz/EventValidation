@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QLa
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtMultimedia import QMediaPlayer
 from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QPalette
+from PyQt5.QtGui import QPalette, QMouseEvent
 from pyqtgraph import GraphicsLayoutWidget
 import sys
 from file_dialog import FileDialog
@@ -190,6 +190,12 @@ class MainWindow(QMainWindow):
                                    "\n0.25x Speed:  /")
         hotkey_message_box.exec_()
 
+    def mousePressEvent(self, event: QMouseEvent) -> None:
+        # Right click -> advance
+        if event.button() == 2:
+            if self.next_button.isEnabled():
+                PlaybackControl.nextButtonPressed(self)
+
     def keyPressEvent(self, event):
         # File Editor
         if event.key() == Qt.Key_1:
@@ -201,9 +207,6 @@ class MainWindow(QMainWindow):
 
         # Playback
         if event.key() == Qt.Key_Right:
-            if self.next_button.isEnabled():
-                PlaybackControl.nextButtonPressed(self)
-        elif event.key() == Qt.RightButton:
             if self.next_button.isEnabled():
                 PlaybackControl.nextButtonPressed(self)
         elif event.key() == Qt.Key_Left:

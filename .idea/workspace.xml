@@ -25,13 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b1d173-ddcf-413b-995e-eefb4a274852" name="Default Changelist" comment="Bug fixes.">
-      <change afterPath="$PROJECT_DIR$/assets/GUI_use.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/GUI_screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/environment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save_output.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_output.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/time_series_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_series_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/startup.py" beforeDir="false" afterPath="$PROJECT_DIR$/startup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +192,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -427,27 +423,5 @@
     <MESSAGE value="Bug fix" />
     <MESSAGE value="Bug fixes." />
     <option name="LAST_COMMIT_MESSAGE" value="Bug fixes." />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1419" height="227" key="GridCell.Tab.0.bottom" timestamp="1628352161893">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1467" height="279" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1623687156265" />
-    <state width="1419" height="227" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1628352161893" />
-    <state width="1419" height="227" key="GridCell.Tab.0.center" timestamp="1628352161893">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1467" height="279" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1623687156264" />
-    <state width="1419" height="227" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1628352161893" />
-    <state width="1419" height="227" key="GridCell.Tab.0.left" timestamp="1628352161892">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1467" height="279" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1623687156264" />
-    <state width="1419" height="227" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1628352161892" />
-    <state width="1419" height="227" key="GridCell.Tab.0.right" timestamp="1628352161893">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1467" height="279" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1623687156264" />
-    <state width="1419" height="227" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1628352161893" />
   </component>
 </project>
