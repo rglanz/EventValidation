@@ -16,8 +16,8 @@ class TimeSeriesPlot:
             self.center_line.setMovable(True)
 
             # Set axes
-            y_min = np.min(self.time_series_epochs[self.event_ID, :])
-            y_max = np.max(self.time_series_epochs[self.event_ID, :])
+            y_min = np.nanmin(self.time_series_epochs[self.event_ID, :])
+            y_max = np.nanmax(self.time_series_epochs[self.event_ID, :])
             self.plot_widget.setYRange(y_min, y_max)
 
     def updateTimeSeries(self):
@@ -33,6 +33,6 @@ class TimeSeriesPlot:
                                                               pen=pg.mkPen(color=(220, 220, 220), width=1))
 
             # Set axes
-            y_min = np.min(self.time_series_epochs[self.event_ID, :])
-            y_max = np.max(self.time_series_epochs[self.event_ID, :])
+            y_min = np.nanmin(self.time_series_epochs[self.event_ID, :])
+            y_max = np.nanmax(self.time_series_epochs[self.event_ID, :])
             self.plot_widget.setYRange(y_min, y_max)

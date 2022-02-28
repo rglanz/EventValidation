@@ -33,6 +33,7 @@ class SaveOutput:
 
                 # Update event ID
                 self.event_ID = np.where(self.last_event_ID == 1)[0][0]
+                self.event_length = len(self.event_times_data)
 
                 # Set event label
                 self.event_ID_label.setText('Event ' + str(self.event_ID) + ' of ' + str(self.event_length - 1))
