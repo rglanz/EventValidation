@@ -179,8 +179,8 @@ class MainWindow(QMainWindow):
         hotkey_message_box.setText("Open video file:  1" +
                                    "\nOpen event times file:  2" +
                                    "\nOpen time-series file:  3"
-                                   "\n\nPrevious Event:  Right arrow" +
-                                   "\nNext Event:  Left arrow/Right-click" +
+                                   "\n\nPrevious Event:  Left arrow" +
+                                   "\nNext Event:  Right arrow/Right-click" +
                                    "\nReplay Event:  R" +
                                    "\nDiscard Event (or undo):  D" +
                                    "\nFlag Event:  F" +
