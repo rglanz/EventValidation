@@ -12,7 +12,7 @@ class PlaybackControl:
         # Update event ID
         if self.event_ID < self.event_length - 1:
             self.event_ID += 1
-            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=int)
             self.last_event_ID[self.event_ID] = 1
             SaveOutput.saveData(self)
 
@@ -45,7 +45,7 @@ class PlaybackControl:
         # Update event ID
         if self.event_ID > 0:
             self.event_ID -= 1
-            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=int)
             self.last_event_ID[self.event_ID] = 1
             SaveOutput.saveData(self)
 

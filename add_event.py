@@ -29,7 +29,7 @@ class AddEvent:
         if new_event_time <= original_event_time:
             # Update event times
             self.event_times_data = np.insert(self.event_times_data, self.event_ID, new_event_time)
-            self.event_times_data_orig = np.insert(self.event_times_data_orig, self.event_ID, np.NaN)
+            self.event_times_data_orig = np.insert(self.event_times_data_orig, self.event_ID, np.nan)
 
             # Update discard log
             self.discard_log = np.insert(self.discard_log, self.event_ID, 0)
@@ -38,7 +38,7 @@ class AddEvent:
             self.event_flags = np.insert(self.event_flags, self.event_ID, 0)
 
             # Update last event ID
-            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=int)
             self.last_event_ID[self.event_ID] =  1
 
             # Save output
@@ -47,7 +47,7 @@ class AddEvent:
         elif new_event_time > original_event_time:
             # Update event times
             self.event_times_data = np.insert(self.event_times_data, self.event_ID + 1, new_event_time)
-            self.event_times_data_orig = np.insert(self.event_times_data_orig, self.event_ID + 1, np.NaN)
+            self.event_times_data_orig = np.insert(self.event_times_data_orig, self.event_ID + 1, np.nan)
 
             # Update discard log
             self.discard_log = np.insert(self.discard_log, self.event_ID + 1, 0)
@@ -56,7 +56,7 @@ class AddEvent:
             self.event_flags = np.insert(self.event_flags, self.event_ID + 1, 0)
 
             # Update last event ID
-            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=int)
             self.last_event_ID[self.event_ID + 1] =  1
 
             # Update event ID

@@ -18,7 +18,7 @@ class SliderHandle:
         if self.event_slider.isSliderDown:
             #Update event ID
             self.event_ID = self.event_slider.value()
-            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=np.int)
+            self.last_event_ID = np.zeros([np.shape(self.event_times_data)[0]], dtype=int)
             self.last_event_ID[self.event_ID] = 1
 
             # Update label
