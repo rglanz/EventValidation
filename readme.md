@@ -1,87 +1,96 @@
-# Event Validation Program
+![](https://img.shields.io/github/actions/workflow/status/codeneuroio/quickscore/ci.yml)
+![](https://img.shields.io/badge/code%20style-black-000000.svg)
+![](https://img.shields.io/badge/license-MIT-blue)
 
-Behavioral research requires observation. This GUI is designed to efficiently validate blindly-generated
-events of interest in an epoch-based framework. If you've generated time stamps for the onset of behaviors-of-interest,
-this GUI will play them back one at a time and allow you to make adjustments to time stamps, or discard them entirely.
+# QuickScore
+Lightning-fast behavioral scoring tool.
 
-![GUI](/assets/GUI_use.gif?raw=true)
+<img src="assets/screenshot.jpeg" alt="interface" width=600 />
 
-###### (Last updated 8.7.21)
+## About
+Scoring behavior is time-consuming. Verifying pre-identified behavior is much faster.
+
+This application takes 1) video, 2) event timestamps, and 3) a timeseries. The video is then clipped into 1-s 
+segments for faster scoring.
+
+This application took my behavioral scoring from several hours to ~20 minutes per subject.
+
+**Hotkeys are paramount here**. Go slow until they are second nature.
 
 ## Installation
 
-Open a conda prompt.
+1. Clone the repo
+2. (Recommended) Create a virtual environment
 
-Change the directory to this folder.
+   `python -m venv .venv`
 
-Create the virtual environment by typing ```conda env create -f environment.yaml```
+3. Install dependencies
+    
+    `pip install -r requirements.txt`
 
-## Launch program
+## Use
 
-Activate the environment in a conda prompt by typing ```conda activate EventValidation```
+(If you installed the dependencies in a virtual environment):
 
-Change the directory to this folder.
+   ```
+   source .venv/bin/activate  # macOS
+   
+   . .\.venv\Scripts\activate  # Windows
+   ```
 
-Type ```python startup.py```
+Launch the app:
+    
+    `python startup.py`
 
-## Typical use case
+Open the files:
 
-1. Load Video
+1. Click `1` to open a video file
+2. Click `2` to open an events file (single-column CSV, no header row)
+3. Click `3` to open a timeseries file (single-column CSV, no header row)
 
-2. Event Times
-        
-        Select a csv file with event times in seconds.
-        
-3. Time Series (Optional)
+### Adjust an event
+Simply move the center line in the timeseries graph to adjust the timing of the current event.
 
-        Load a csv file with the time-series data. Each
-        entry should represent the value of the time-series at that
-        particular frame.
-        
-        The time-series will not be loaded if its length does not match
-        the number of video frames.
-        
-        To adjust the timing of events and add new events, a time-series must be loaded.
-        
-4. Control video playback with the next, prev, and replay buttons.
+### Create a new event
+If you see an event that is not in your original CSV, but you want to add it to the data, hold down `Alt` and move 
+the center line on the TimeSeries graph to the desired position.
 
-5. Adjust the events.
-        
-        To adjust the event onset time, drag the dashed line at time-lag 0 to the desired position. To add a new event,
-        hold down Alt and drag the dashed line to a new position.
+### Label an event
+Click `Shift` to open the label editor. Use `tab` to toggle left/right, and type the label. The autosuggestions can 
+be changed [here](app/views/label_view.py#L49). Click `Enter` to save the label.
 
-6. Use the discard/flag button to update the output file.
+### Save Results
+Saving is performed automatically with every operation.
 
-        Upon loading an Event Times file, two new files named [video_file_name]_output.pkl and 
-        [video_file_name]_output.csv are created (or loaded, if they exist already).
-        
-        The output file contains the original and adjusted (if applicable) event times, whether the event has been
-        discarded (1) or not (0), whether the event has been flagged (1) or not (0), and the last event viewed
-        (for picking up where you left off).
-        
-        If you added an event, it will have an original time entry of 'nan'.
+### Hotkeys
 
-## Hotkeys
-Open video file (1)
+```
+# Files
+1: Open Video
+2: Open Events
+3: Open Timeseries
 
-Open event times file (2)
+# Playback
+Left Arrow: Previous Event
+Right Arrow: Next Event
+Right Mouse Click: Next Event
+Space: Replay current event
+Alt: Hold and drag the center line to create a new event
 
-Open time series file (3)
+# Playback Speed
+Comma: 1x Speed
+Period: 0.5x Speed
+Slash: 0.25x Speed
 
-Next event (right arrow)
+# Events
+F: Flag event
+D: Discard event
 
-Previous event (left arrow)
+# Labels
+Shift: Open label editor
+Tab: Toggle L/R prefix
+Enter: Save label and close editor
+```
 
-Replay event (r)
-
-Discard event (d)
-
-Flag event (f)
-
-Add event (hold Alt + drag center line)
-
-1.0x Speed (,)
-
-0.50x Speed (.)
-
-0.25x Speed (/)
+## License
+QuickScore is distributed under the MIT License.

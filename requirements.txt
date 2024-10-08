@@ -1,0 +1,6 @@
+opencv-contrib-python-headless
+pyqt5
+PyQt5-stubs
+pandas
+numpy
+pyqtgraph
