@@ -1,0 +1,19 @@
+[project]
+name = "QuickScore"
+requires-python = ">= 3.8"
+
+[tool.isort]
+profile = "black"
+skip = [".venv"]
+line_length = 88
+no_lines_before = ["FIRSTPARTY", "THIRDPARTY"]
+
+[tool.black]
+exclude = '''
+/(
+    .venv
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
